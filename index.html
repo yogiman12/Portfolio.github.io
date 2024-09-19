@@ -3,310 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Portfolio - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --text-color: #333;
-            --bg-color: #ecf0f1;
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2c3e50',
+                    }
+                }
+            }
         }
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease;
-        }
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 2rem;
-        }
-        header {
-            background: var(--secondary-color);
-            color: #fff;
-            padding: 2rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        nav ul {
-            display: flex;
-            list-style-type: none;
-        }
-        nav ul li {
-            padding: 0 1rem;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .hero {
-            background: url('/api/placeholder/1200/600') no-repeat center center/cover;
-            height: 100vh;
-            position: relative;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        .hero * {
-            z-index: 10;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 600px;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: opacity 0.3s ease;
-        }
-        .btn:hover {
-            opacity: 0.8;
-        }
-        section {
-            padding: 5rem 0;
-        }
-        .section-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        .project-card img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .skill-tag {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        #contact form {
-            display: grid;
-            gap: 1rem;
-            max-width: 500px;
-            margin: auto;
-        }
-        #contact form input,
-        #contact form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        footer {
-            background: var(--secondary-color);
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        .social-links {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-        }
-        .social-links a {
-            color: #fff;
-            margin: 0 0.5rem;
-        }
-        /* Dark mode toggle */
-        .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-        }
-        .theme-switch {
-            display: inline-block;
-            height: 34px;
-            position: relative;
-            width: 60px;
-        }
-        .theme-switch input {
-            display: none;
-        }
-        .slider {
-            background-color: #ccc;
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: .4s;
-        }
-        .slider:before {
-            background-color: #fff;
-            bottom: 4px;
-            content: "";
-            height: 26px;
-            left: 4px;
-            position: absolute;
-            transition: .4s;
-            width: 26px;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .slider.round {
-            border-radius: 34px;
-        }
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">YourName</div>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
+    <header class="bg-secondary text-white fixed w-full z-10">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <!-- <div class="text-2xl font-bold">Ahmed Mostafa Kamel</div> -->
             <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <ul class="flex space-x-4">
+                    <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+                    <li><a href="#projects" class="hover:text-primary transition">Projects</a></li>
+                    <li><a href="#skills" class="hover:text-primary transition">Skills</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition">Contact</a></li>
                 </ul>
             </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
+            <div class="flex items-center">
+                <span class="mr-2 text-sm">Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
                 </label>
             </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Your Name</h1>
-        <p>Web Developer | Designer | Creative Thinker</p>
-        <a href="#contact" class="btn">Get In Touch</a>
+    <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('/api/placeholder/1200/600');">
+        <div class="text-center text-white z-10">
+            <h1 class="text-5xl font-bold mb-4">Ahmed Mostafa Kamel</h1>
+            <p class="text-xl mb-8">Data scientist | Data analyst | AI engineer</p>
+            <a href="#contact" class="bg-primary text-white px-6 py-3 rounded hover:bg-blue-600 transition">Get In Touch</a>
+        </div>
+        <div class="absolute inset-0 bg-black opacity-60"></div>
     </section>
 
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="Project 1">
-                    <h3>Project 1</h3>
-                    <p>Description of project 1</p>
-                    <a href="#" class="btn">View Project</a>
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <img src="/api/placeholder/300/200" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Project 1</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Description of project 1</p>
+                        <a href="#" class="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600 transition">View Project</a>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="Project 2">
-                    <h3>Project 2</h3>
-                    <p>Description of project 2</p>
-                    <a href="#" class="btn">View Project</a>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <img src="/api/placeholder/300/200" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Project 2</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Description of project 2</p>
+                        <a href="#" class="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600 transition">View Project</a>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="Project 3">
-                    <h3>Project 3</h3>
-                    <p>Description of project 3</p>
-                    <a href="#" class="btn">View Project</a>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <img src="/api/placeholder/300/200" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Project 3</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Description of project 3</p>
+                        <a href="#" class="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600 transition">View Project</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Git</span>
+    <section id="skills" class="bg-gray-200 dark:bg-gray-800 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">My Skills</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-primary text-white px-4 py-2 rounded-full"><i class="fab fa-microsoft"></i> Excel</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full">Power BI</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full">SQL</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full"><i class="fab fa-python"></i> Python</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full">Machine learning</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full"><i class="fab fa-github"></i> Git</span>
+                <span class="bg-primary text-white px-4 py-2 rounded-full"><i class="fab fa-linux"></i> Linux</span>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form id="contact-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+            <form id="contact-form" class="max-w-lg mx-auto">
+                <div class="mb-4">
+                    <input type="text" placeholder="Name" required class="w-full px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div class="mb-4">
+                    <input type="email" placeholder="Email" required class="w-full px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div class="mb-4">
+                    <textarea placeholder="Your Message" rows="5" required class="w-full px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded hover:bg-blue-600 transition">Send Message</button>
             </form>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+    <footer class="bg-secondary text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mt-4 space-x-4">
+                <a href="https://www.linkedin.com/in/ahmed-mostafa-kamel-mohammed/" class="text-2xl hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/yogiahmed12" class="text-2xl hover:text-primary transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/yogiman12" class="text-2xl hover:text-primary transition"><i class="fab fa-github"></i></a>
+                <a href="https://www.kaggle.com/ahmedmostafakamel" class="text-2xl hover:text-primary transition"><i class="fab fa-kaggle"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -317,27 +139,19 @@
         });
 
         // Dark mode toggle
-        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        const currentTheme = localStorage.getItem('theme');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
 
-        if (currentTheme) {
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            if (currentTheme === 'dark') {
-                toggleSwitch.checked = true;
-            }
+        darkModeToggle.addEventListener('change', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            html.classList.add('dark');
+            darkModeToggle.checked = true;
         }
-
-        function switchTheme(e) {
-            if (e.target.checked) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }    
-        }
-
-        toggleSwitch.addEventListener('change', switchTheme, false);
 
         // Form submission (you'll need to implement the backend)
         document.getElementById('contact-form').addEventListener('submit', function(e) {
